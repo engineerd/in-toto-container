@@ -11,13 +11,12 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/docker/docker/client"
-
 	"github.com/docker/cli/cli/command"
 	cliflags "github.com/docker/cli/cli/flags"
 	"github.com/docker/distribution/reference"
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/container"
+	"github.com/docker/docker/client"
 	"github.com/docker/docker/pkg/jsonmessage"
 	"github.com/docker/docker/pkg/stdcopy"
 	"github.com/docker/docker/registry"
@@ -154,10 +153,6 @@ func initializeDockerCli() (command.Cli, error) {
 		return nil, err
 	}
 	return cli, nil
-}
-
-func copyToContainer(ctx context.Context, cli command.Cli, id, src, dst string) error {
-	return nil
 }
 
 // TODO - allow passing multiple signing keys

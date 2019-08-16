@@ -21,7 +21,11 @@ build:
 
 .PHONY: test
 test:
-	go test $(TESTFLAGS) ./...
+	go test $(TESTFLAGS) ./... -v
+
+.PHONY: e2e
+e2e:
+	$(BINDIR)/$(TARGET) verify --image radumatei/in-toto-container:v1 --layout testdata/intoto/demo.layout.template --layout-key testdata/intoto/alice.pub --links testdata/intoto/ --target testdata/intoto/foo.tar.gz
 
 .PHONY: lint
 lint:
@@ -44,4 +48,4 @@ endif
 ifndef HAS_GOIMPORTS
 	go get -u golang.org/x/tools/cmd/goimports
 endif
-	dep ensure -vendor-only -v
+	dep check
