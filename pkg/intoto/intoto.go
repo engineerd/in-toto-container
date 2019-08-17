@@ -173,11 +173,20 @@ func validateSliceOfArtifactRules(rules [][]string) error {
 }
 
 // GetLayout returns an In-Toto layout given a file path
-func GetLayout(layout string) (*in_toto.Layout, error) {
+func getLayout(layout string) (*in_toto.Layout, error) {
 	var mb in_toto.Metablock
 	if err := mb.Load(layout); err != nil {
 		return nil, fmt.Errorf("cannot load layout from file file %v: %v", layout, err)
 	}
 	l := mb.Signed.(in_toto.Layout)
 	return &l, nil
+}
+
+// ValidateFromPath validates a layout given a path
+func ValidateFromPath(p string) error {
+	l, err := getLayout(p)
+	if err != nil {
+		return err
+	}
+	return ValidateLayout(*l)
 }

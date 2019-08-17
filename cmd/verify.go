@@ -6,6 +6,7 @@ import (
 	"github.com/spf13/cobra"
 
 	"github.com/engineerd/in-toto-container/pkg/docker"
+	"github.com/engineerd/in-toto-container/pkg/intoto"
 )
 
 type verifyCmd struct {
@@ -34,6 +35,12 @@ func newVerifyCmd() *cobra.Command {
 }
 
 func (v *verifyCmd) run() error {
+	fmt.Printf("validating layout structure and signatures...\n")
+	err := intoto.ValidateFromPath(v.layout)
+	if err != nil {
+		return err
+	}
+
 	fmt.Printf("running in-toto verifications in container based on image %v...\n", v.verificationImage)
 	return docker.Run(v.verificationImage, v.layout, v.layoutKey, v.linkDir, v.targetFiles)
 }
