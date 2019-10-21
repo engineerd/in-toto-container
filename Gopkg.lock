@@ -228,7 +228,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:0dec42c5ca3ff8db4ed30c2f3bfb2db65ca051f4fe44c40586be0f11a595531e"
+  digest = "1:c16871f580ae5a8b67de217cb4b29681444b77e56ccd772f359eb4dc4d2d3667"
   name = "github.com/docker/docker"
   packages = [
     "api",
@@ -254,7 +254,6 @@
     "pkg/jsonmessage",
     "pkg/longpath",
     "pkg/mount",
-    "pkg/stdcopy",
     "pkg/stringid",
     "pkg/system",
     "pkg/tarsum",
@@ -745,10 +744,10 @@
     "github.com/docker/docker/api/types/container",
     "github.com/docker/docker/client",
     "github.com/docker/docker/pkg/jsonmessage",
-    "github.com/docker/docker/pkg/stdcopy",
     "github.com/docker/docker/registry",
     "github.com/in-toto/in-toto-golang/in_toto",
     "github.com/oklog/ulid",
+    "github.com/sirupsen/logrus",
     "github.com/spf13/cobra",
     "github.com/stretchr/testify/assert",
   ]
