@@ -1,8 +1,7 @@
 package main
 
 import (
-	"fmt"
-
+	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 
 	"github.com/engineerd/in-toto-container/pkg/docker"
@@ -35,12 +34,12 @@ func newVerifyCmd() *cobra.Command {
 }
 
 func (v *verifyCmd) run() error {
-	fmt.Printf("validating layout structure and signatures...\n")
+	log.Infof("validating layout structure and signatures..")
 	err := intoto.ValidateFromPath(v.layout)
 	if err != nil {
 		return err
 	}
 
-	fmt.Printf("running in-toto verifications in container based on image %v...\n", v.verificationImage)
-	return docker.Run(v.verificationImage, v.layout, v.layoutKey, v.linkDir, v.targetFiles)
+	log.Infof("running in-toto verifications in container based on image %v...", v.verificationImage)
+	return docker.Run(v.verificationImage, v.layout, v.layoutKey, v.linkDir, logLevel, v.targetFiles)
 }
