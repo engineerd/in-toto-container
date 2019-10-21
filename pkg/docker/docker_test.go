@@ -16,6 +16,6 @@ func TestRun(t *testing.T) {
 	links := testDir
 	targets := []string{filepath.Join(testDir, "foo.tar.gz")}
 
-	err := Run(image, layout, key, links, targets)
+	err := Run(image, layout, key, links, "debug", targets)
 	assert.NoError(t, err)
 }
