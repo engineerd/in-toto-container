@@ -27,7 +27,7 @@ func newVerifyCmd() *cobra.Command {
 	cmd.Flags().StringVarP(&v.layout, "layout", "", "", "path to the root layout")
 	cmd.Flags().StringVarP(&v.layoutKey, "layout-key", "", "", "path to the key used to sign the root layout")
 	cmd.Flags().StringVarP(&v.linkDir, "links", "", "", "path to directory with the links")
-	cmd.Flags().StringVarP(&v.verificationImage, "image", "", "", "container image to run the verification")
+	cmd.Flags().StringVarP(&v.verificationImage, "image", "", "docker.pkg.github.com/engineerd/in-toto-container/verification:v1", "container image to run the verification")
 	cmd.Flags().StringArrayVarP(&v.targetFiles, "target", "", nil, "target files to copy in container")
 
 	return cmd
