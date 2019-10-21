@@ -25,7 +25,7 @@ test:
 
 .PHONY: e2e
 e2e:
-	$(BINDIR)/$(TARGET) verify --image radumatei/in-toto-container:v1 --layout testdata/intoto/demo.layout.template --layout-key testdata/intoto/alice.pub --links testdata/intoto/ --target testdata/intoto/foo.tar.gz
+	$(BINDIR)/$(TARGET) verify --layout testdata/intoto/demo.layout.template --layout-key testdata/intoto/alice.pub --links testdata/intoto/ --target testdata/intoto/foo.tar.gz
 
 .PHONY: lint
 lint:
