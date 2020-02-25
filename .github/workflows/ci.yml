@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - name: Set up Go 1.12
+    - name: Set up Go 1.13
       uses: actions/setup-go@v1
       with:
-        go-version: 1.12
+        go-version: 1.13
       id: go
 
     - name: Check out code
@@ -18,14 +18,5 @@ jobs:
 
     - name: Build, Test, Lint
       run: |
-        export GOPATH=$HOME/go
-        export GOBIN=$(go env GOPATH)/bin
-        export PATH=$PATH:$GOPATH
-        export PATH=$PATH:$GOBIN
-        mkdir -p $GOPATH/pkg
-        mkdir -p $GOBIN
-        mkdir -p $GOPATH/src/github.com/$GITHUB_REPOSITORY
-        mv $(pwd)/* $GOPATH/src/github.com/$GITHUB_REPOSITORY
-        cd $GOPATH/src/github.com/$GITHUB_REPOSITORY
-        
-        make bootstrap build test lint e2e 
+        export GOPATH=$HOME/go && export GOBIN=$(go env GOPATH)/bin && export PATH=$PATH:$GOPATH&& export PATH=$PATH:$GOBIN && mkdir -p $GOBIN
+        make bootstrap build test e2e
